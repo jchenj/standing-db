@@ -5,7 +5,7 @@ from data.sqlalchemybase import SqlAlchemyBase
 
 
 class Location(SqlAlchemyBase):
-    __tablename__: "locations"
+    __tablename__: 'locations'
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
 
