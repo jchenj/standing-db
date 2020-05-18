@@ -5,7 +5,7 @@ from data.sqlalchemybase import SqlAlchemyBase
 
 
 class Location(SqlAlchemyBase):
-    __tablename__: 'locations'
+    __tablename__ = 'locations'
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
 
@@ -23,6 +23,6 @@ class Location(SqlAlchemyBase):
     seating = sa.Column(sa.Boolean)
     power = sa.Column(sa.Boolean)
     foodbev = sa.Column(sa.Boolean)
-    comments = sa.column(sa.String)
+    comments = sa.Column(sa.String)
 
     reviews = orm.relation('Review', back_populates='location')
