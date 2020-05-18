@@ -11,6 +11,7 @@ class Location(SqlAlchemyBase):
 
     created_date = sa.Column(sa.DateTime, default=datetime.datetime.now, index=True)
     org = sa.Column(sa.String, index=True)
+    space = sa.Column(sa.String)
     street = sa.Column(sa.String)
     city = sa.Column(sa.String, index=True)
     state = sa.Column(sa.String)
@@ -19,6 +20,7 @@ class Location(SqlAlchemyBase):
     height_in = sa.Column(sa.Integer)
     height_cm = sa.Column(sa.Integer)
     standing_capacity = sa.Column(sa.Integer)
+    wifi = sa.Column(sa.Boolean)
     adjustable = sa.Column(sa.Boolean)
     seating = sa.Column(sa.Boolean)
     power = sa.Column(sa.Boolean)

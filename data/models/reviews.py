@@ -12,5 +12,5 @@ class Review(SqlAlchemyBase):
     reviewer = sa.Column(sa.String, index=True)
     comments = sa.Column(sa.String)
 
-    location_id = sa.Column(sa.Integer, sa.ForeignKey('locations.id'), nullable=False)
-    location = orm.relation('Location', back_populates='review')
+    location_id = sa.Column(sa.Integer, sa.ForeignKey('locations.id'))
+    location = orm.relation('Location')
