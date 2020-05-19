@@ -25,6 +25,6 @@ class Location(SqlAlchemyBase):
     seating = sa.Column(sa.Boolean)
     power = sa.Column(sa.Boolean)
     foodbev = sa.Column(sa.Boolean)
-    comments = sa.Column(sa.String)
+    notes = sa.Column(sa.String)
 
     reviews = orm.relation('Review', back_populates='location')

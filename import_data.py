@@ -15,14 +15,15 @@ def import_if_empty():
 
 def __import_locations():
     session = session_factory.create_session()
-    if session.query(Location).count() > 1:
+    if session.query(Location).count() > 0:
         return
 
     location = Location()
-    location.org = 'Org2'
-    location.space = 'cafe'
-    location.city = 'Seattle'
-    location.country = 'USA'
+    location.org = 'Org1'
+    location.space = 'ground floor cafe'
+    location.city = 'Vancouver'
+    location.country = 'Canada'
+    location.standing_capacity = 5
     location.height_in = random.randint(35, 50)
     session.add(location)
 
@@ -31,6 +32,7 @@ def __import_locations():
     location.space = 'cafe'
     location.city = 'Seattle'
     location.country = 'USA'
+    location.standing_capacity = 10
     location.height_in = random.randint(35, 50)
     session.add(location)
 
@@ -39,6 +41,7 @@ def __import_locations():
     location.space = 'atrium'
     location.city = 'Vancouver'
     location.country = 'Canada'
+    location.standing_capacity = 15
     location.height_in = random.randint(35, 50)
     session.add(location)
 
@@ -47,6 +50,7 @@ def __import_locations():
     location.space = 'lobby'
     location.city = 'Singapore'
     location.country = 'Singapore'
+    location.standing_capacity = 3
     location.height_in = random.randint(35, 50)
     session.add(location)
 
@@ -58,6 +62,27 @@ def __import_reviews():
     if session.query(Review).count() > 0:
         return
 
-    #! TODO: add two reviews per location
-    session.add(review)
+    reviewers = [
+        'Reviewer 1',
+        'Reviewer 2',
+        'Reviewer 3'
+    ]
+
+    locations = list(session.query(Location).all())
+
+    sample_text = [
+        'Positive review',
+        'Neutral review',
+        'Negative review'
+    ]
+
+    # create 10 reviews
+    COUNT = 10
+    for n in range(0, COUNT):
+        review = Review()
+        review.reviewer = random.choice(reviewers)
+        review.location = random.choice(locations)
+        review.text = random.choice(sample_text)
+        session.add(review)
+
     session.commit()
